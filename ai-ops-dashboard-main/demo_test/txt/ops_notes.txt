@@ -1,4 +1,0 @@
-Operations notes:
-- Review inventory intake
-- Confirm onboarding packets
-- Schedule system health check
