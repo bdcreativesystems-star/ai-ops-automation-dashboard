@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Ops Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="layout">
+        <aside class="sidebar">
+            <div class="brand-mark">AI</div>
+            <h1>AI Ops</h1>
+            <p class="sidebar-copy">Operational workflows, reporting, and automation in one lightweight command center.</p>
+            <nav>
+                <a href="/">Dashboard</a>
+                <a href="/">Automations</a>
+                <a href="/">Logs</a>
+                <a href="/">Settings</a>
+            </nav>
+        </aside>
+
+        <main class="main">
+            <section class="hero">
+                <div>
+                    <span class="eyebrow">Devpost Demo Build</span>
+                    <h2>Operations Dashboard</h2>
+                    <p class="hero-copy">Show how repetitive business tasks can be organized, reported, and automated from a single interface.</p>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-label">Live Actions</span>
+                    <strong>2</strong>
+                    <span class="hero-stat-note">File Organizer and System Report</span>
+                </div>
+            </section>
+
+            {% if message %}
+                <div class="status {{ message_type }}">
+                    {{ message }}
+                </div>
+            {% endif %}
+
+            <div class="grid">
+                <div class="card">
+                    <h3>File Organizer</h3>
+                    <p class="muted">Sort mixed files into type-based folders in one step.</p>
+                    <form method="POST">
+                        <input type="hidden" name="action" value="organize">
+                        <div class="input-row">
+                            <input type="text" name="folder" placeholder="Enter folder path" value="{{ folder_value }}">
+                            <button type="submit">Run</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="card">
+                    <h3>System Report</h3>
+                    <p class="muted">Capture a quick snapshot of the current machine for operational visibility.</p>
+                    <form method="POST">
+                        <input type="hidden" name="action" value="report">
+                        <button type="submit">Generate Report</button>
+                    </form>
+                </div>
+
+                <div class="card">
+                    <h3>Demo Highlights</h3>
+                    <ul class="feature-list">
+                        <li>Flask dashboard for operational workflows</li>
+                        <li>Built-in file organization automation</li>
+                        <li>System reporting for quick visibility</li>
+                        <li>Local smoke tests for reliable demos</li>
+                    </ul>
+                </div>
+            </div>
+
+            {% if report_content %}
+                <section class="report-panel">
+                    <h3>Latest System Report</h3>
+                    <pre>{{ report_content }}</pre>
+                </section>
+            {% endif %}
+            {% if organizer_result %}
+                <section class="report-panel">
+                    <h3>Latest File Organizer Result</h3>
+                    <pre>{{ organizer_result }}</pre>
+                </section>
+            {% endif %}
+        </main>
+    </div>
+</body>
+</html>
